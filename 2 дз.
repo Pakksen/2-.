@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+bool isNum(string num)
+{
+    string Numbers = "1234567890";
+    bool isNumber = false;
+    for (int i = 0;i<num.length();i++)
+    {
+        isNumber = false;
+        for (int j = 0; j<10; j++) if (num[i] == Numbers[j] ) isNumber = true;
+        if (isNumber == false) return false;
+    }
+    return true;
+}
+
+bool isPalindrom (string num)
+{
+    if (num.length()<1)
+        return false;
+    if (isNum(num) == false) return false;
+    for (int i = 0; i<num.length()/2;i++)
+    {
+        if (num[i]!=num[num.length()-1-i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    cout << "Enter count of numbers: ";
+    int QuantityK;
+    string Num;
+    int count = 0;
+    cin >> QuantityK;
+    for (int i = 0; i<QuantityK; i++)
+    {
+        cin >> Num;
+        if (isPalindrom(Num)) count++;
+
+    }
+    cout <<"Quantity palindroms: "<<count;
+    return 0;
+}
